@@ -200,7 +200,7 @@ colour_menu = Menu(menubar, tearoff=0)
 colour_menu.add_command(label="Red", command=make_canvas_red)
 colour_menu.add_command(label="Blue", command=make_canvas_blue)
 colour_menu.add_command(label="Green", command=make_canvas_green)
-colour_menu.add_command(label="Green", command=make_canvas_purple)
+colour_menu.add_command(label="Purple", command=make_canvas_purple)
 settings_bar.add_cascade(label="Change background colour", menu=colour_menu)
 
 settings_bar.add_command(label="Quit", command=root.quit)
