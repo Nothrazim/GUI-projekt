@@ -10,7 +10,7 @@ password = StringVar()
 def close(key=None):  # Just simple function to close program
     if key is None:  # To prevent PyCharm from complaining
         pass
-    root.quit()
+    quit()
 
 
 def reset_status_bar():  # Resets the status bar text to it's default text & colour
@@ -196,13 +196,19 @@ def make_canvas_purple():
     main_frame["bg"] = frame_canvas["bg"]
 
 
+def make_canvas_cyan():
+    frame_canvas.configure(background="cyan")
+    main_frame["bg"] = frame_canvas["bg"]
+
+
 colour_menu = Menu(menubar, tearoff=0)
 colour_menu.add_command(label="Red", command=make_canvas_red)
 colour_menu.add_command(label="Blue", command=make_canvas_blue)
 colour_menu.add_command(label="Green", command=make_canvas_green)
 colour_menu.add_command(label="Purple", command=make_canvas_purple)
+colour_menu.add_command(label="Cyan", command=make_canvas_cyan)
 settings_bar.add_cascade(label="Change background colour", menu=colour_menu)
-
+settings_bar.add_separator()
 settings_bar.add_command(label="Quit", command=root.quit)
 
 ############
