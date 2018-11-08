@@ -2,13 +2,13 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.title("GUI Projekt")
+root.title("GUI Project")
 username = StringVar()
 password = StringVar()
 
 
 def close(key=None):  # Just simple function to close program
-    if key is None:  # To prevent PyCharm from complaining
+    if key is None:  # To prevent PyCharm from complaining about no key usage
         pass
     quit()
 
@@ -16,6 +16,8 @@ def close(key=None):  # Just simple function to close program
 def reset_status_bar():  # Resets the status bar text to it's default text & colour
     status_bar_message["fg"] = "black"
     status_bar_message["text"] = "Welcome. Enter username and password."
+    entry_username["text"] += "aa"
+    entry_password["text"] = ""
 
 
 def secret_hint(key=None):  # Hint to find secret key
@@ -30,7 +32,7 @@ def secret_key(key=None):  # If player presses secret key (see keybindings) this
     messagebox.showinfo("You did it!", "You have pressed the secret key.")
 
 
-def change_text(key=None):
+def change_text(key=None):  # Alters text of the 'button_dont_press' button
     if key is None:  # To prevent PyCharm from complaining
         pass
     button_dont_press["text"] = "You pressed it anyway."
@@ -84,6 +86,7 @@ def open_success_window():
         success_window = Tk()
         success_frame_create(success_window)
         success_window.mainloop()
+        success_window.bind("<Escape>", close)
 
 
 def success_frame_create(success_window):
@@ -132,6 +135,10 @@ entry_password.bind("<Return>", verify_login)
 
 other_frame = Frame(main_frame, bd=1)
 other_frame.pack(side=BOTTOM)
+
+###########
+# Buttons #
+###########
 
 button_frame = Frame(main_frame, bd=1)
 button_frame.pack(side=BOTTOM)
@@ -227,7 +234,6 @@ status_bar_message.pack()
 ############
 
 root.bind("<Escape>", close)
-root.bind("<Alt-Key-F4>", exit_print)
 root.bind("<y>", secret_key)  # Secret key accepts both lower- and upper-case character
 root.bind("<Y>", secret_key)
 
